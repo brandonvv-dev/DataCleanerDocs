@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataCleaner User Guide</title>
+    <title>DataCleaner - Professional Data Cleaning Tool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Primary Colors */
             --slate-900: #0f172a;
             --slate-800: #1e293b;
             --slate-700: #334155;
@@ -20,30 +19,19 @@
             --slate-200: #e2e8f0;
             --slate-100: #f1f5f9;
             --slate-50: #f8fafc;
-
-            /* Accent Colors */
             --blue-600: #2563eb;
             --blue-500: #3b82f6;
             --blue-400: #60a5fa;
-            --blue-300: #93c5fd;
-            --blue-200: #bfdbfe;
             --blue-100: #dbeafe;
             --blue-50: #eff6ff;
-
-            /* Semantic Colors */
-            --success: #10b981;
-            --success-light: #d1fae5;
-            --warning: #f59e0b;
-            --warning-light: #fef3c7;
-            --error: #ef4444;
-            --error-light: #fee2e2;
-            --info: #3b82f6;
-            --info-light: #dbeafe;
-
-            /* Layout */
-            --sidebar-width: 280px;
-            --content-max-width: 900px;
-            --header-height: 64px;
+            --green-600: #16a34a;
+            --green-500: #22c55e;
+            --green-100: #dcfce7;
+            --purple-600: #9333ea;
+            --purple-500: #a855f7;
+            --purple-100: #f3e8ff;
+            --orange-500: #f97316;
+            --orange-100: #ffedd5;
         }
 
         * {
@@ -54,7 +42,6 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
         }
 
         body {
@@ -62,7 +49,6 @@
             background: var(--slate-50);
             color: var(--slate-800);
             line-height: 1.7;
-            font-size: 16px;
         }
 
         /* Header */
@@ -71,8 +57,9 @@
             top: 0;
             left: 0;
             right: 0;
-            height: var(--header-height);
-            background: var(--slate-900);
+            height: 64px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--slate-700);
             z-index: 100;
             display: flex;
@@ -85,7 +72,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -97,41 +84,40 @@
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 800;
+            font-size: 16px;
         }
 
         .logo-text {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             color: white;
         }
 
-        .logo-badge {
+        .logo-version {
             background: var(--blue-500);
             color: white;
             font-size: 11px;
             font-weight: 600;
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 9999px;
-            margin-left: 8px;
         }
 
-        .header-nav {
+        .nav {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 32px;
         }
 
-        .header-nav a {
+        .nav a {
             color: var(--slate-300);
             text-decoration: none;
             font-size: 14px;
@@ -139,464 +125,250 @@
             transition: color 0.2s;
         }
 
-        .header-nav a:hover {
+        .nav a:hover {
             color: white;
         }
 
-        /* Layout */
-        .layout {
-            display: flex;
-            margin-top: var(--header-height);
-            min-height: calc(100vh - var(--header-height));
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: var(--header-height);
-            left: 0;
-            width: var(--sidebar-width);
-            height: calc(100vh - var(--header-height));
-            background: white;
-            border-right: 1px solid var(--slate-200);
-            overflow-y: auto;
-            padding: 24px 0;
-        }
-
-        .sidebar-section {
-            margin-bottom: 24px;
-        }
-
-        .sidebar-title {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--slate-500);
-            padding: 0 24px;
-            margin-bottom: 8px;
-        }
-
-        .sidebar-nav {
-            list-style: none;
-        }
-
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 24px;
-            color: var(--slate-600);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.15s;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-nav a:hover {
-            color: var(--slate-900);
-            background: var(--slate-50);
-        }
-
-        .sidebar-nav a.active {
-            color: var(--blue-600);
-            background: var(--blue-50);
-            border-left-color: var(--blue-500);
-        }
-
-        .sidebar-nav .nav-number {
+        .btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
-            background: var(--slate-100);
-            border-radius: 4px;
-            font-size: 11px;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--slate-500);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
-        .sidebar-nav a.active .nav-number {
-            background: var(--blue-100);
-            color: var(--blue-600);
+        .btn-primary {
+            background: var(--blue-500);
+            color: white;
         }
 
-        /* Main Content */
-        .main {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 48px;
+        .btn-primary:hover {
+            background: var(--blue-600);
+            transform: translateY(-1px);
         }
 
-        .content {
-            max-width: var(--content-max-width);
+        .btn-secondary {
+            background: var(--slate-100);
+            color: var(--slate-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--slate-200);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--blue-500) 0%, transparent 60%);
+            opacity: 0.1;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--blue-400), var(--blue-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--slate-400);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 14px 28px;
+            font-size: 16px;
+        }
+
+        /* Features Grid */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-dark {
+            background: var(--slate-900);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Typography */
-        h1 {
-            font-size: 36px;
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
             font-weight: 700;
-            color: var(--slate-900);
             margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
 
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-top: 64px;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--slate-200);
-            letter-spacing: -0.01em;
-        }
-
-        h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--slate-800);
-            margin-top: 40px;
-            margin-bottom: 16px;
-        }
-
-        h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--slate-700);
-            margin-top: 32px;
-            margin-bottom: 12px;
-        }
-
-        p {
-            margin-bottom: 16px;
-            color: var(--slate-600);
-        }
-
-        .lead {
+        .section-header p {
             font-size: 18px;
             color: var(--slate-500);
-            margin-bottom: 32px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        strong {
-            color: var(--slate-800);
-            font-weight: 600;
-        }
-
-        /* Links */
-        a {
-            color: var(--blue-600);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Lists */
-        ul, ol {
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-
-        li {
-            margin-bottom: 8px;
-            color: var(--slate-600);
-        }
-
-        li::marker {
+        .section-dark .section-header p {
             color: var(--slate-400);
         }
 
-        /* Code */
-        code {
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 14px;
-            background: var(--slate-100);
-            color: var(--slate-700);
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        pre {
-            background: var(--slate-900);
-            color: var(--slate-100);
-            padding: 20px 24px;
-            border-radius: 12px;
-            overflow-x: auto;
-            margin: 24px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        pre code {
-            background: none;
-            color: inherit;
-            padding: 0;
-        }
-
-        .code-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--slate-800);
-            padding: 12px 24px;
-            border-radius: 12px 12px 0 0;
-            margin-bottom: -1px;
-        }
-
-        .code-header + pre {
-            border-radius: 0 0 12px 12px;
-            margin-top: 0;
-        }
-
-        .code-lang {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--slate-400);
-            text-transform: uppercase;
-        }
-
-        /* Tables */
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 24px 0;
-            border-radius: 12px;
-            border: 1px solid var(--slate-200);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        th {
-            background: var(--slate-50);
-            text-align: left;
-            padding: 12px 16px;
-            font-weight: 600;
-            color: var(--slate-700);
-            border-bottom: 1px solid var(--slate-200);
-        }
-
-        td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--slate-100);
-            color: var(--slate-600);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background: var(--slate-50);
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border: 1px solid var(--slate-200);
-            border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
-        }
-
-        .card-grid {
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .feature-card {
             background: white;
             border: 1px solid var(--slate-200);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.2s;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
             border-color: var(--blue-200);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+            transform: translateY(-4px);
         }
 
-        .feature-card .icon {
-            width: 48px;
-            height: 48px;
-            background: var(--blue-100);
-            color: var(--blue-600);
-            border-radius: 10px;
+        .section-dark .feature-card {
+            background: var(--slate-800);
+            border-color: var(--slate-700);
+        }
+
+        .section-dark .feature-card:hover {
+            border-color: var(--blue-500);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
-        .feature-card h4 {
-            margin-top: 0;
-            margin-bottom: 8px;
+        .icon-blue { background: var(--blue-100); }
+        .icon-green { background: var(--green-100); }
+        .icon-purple { background: var(--purple-100); }
+        .icon-orange { background: var(--orange-100); }
+
+        .section-dark .icon-blue { background: rgba(59, 130, 246, 0.2); }
+        .section-dark .icon-green { background: rgba(34, 197, 94, 0.2); }
+        .section-dark .icon-purple { background: rgba(168, 85, 247, 0.2); }
+        .section-dark .icon-orange { background: rgba(249, 115, 22, 0.2); }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
             color: var(--slate-900);
         }
 
+        .section-dark .feature-card h3 {
+            color: white;
+        }
+
         .feature-card p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        /* Callouts */
-        .callout {
-            display: flex;
-            gap: 16px;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 24px 0;
-        }
-
-        .callout-icon {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .callout-content {
-            flex: 1;
-        }
-
-        .callout-title {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .callout-text {
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .callout-info {
-            background: var(--blue-50);
-            border: 1px solid var(--blue-200);
-        }
-
-        .callout-info .callout-icon {
-            color: var(--blue-600);
-        }
-
-        .callout-info .callout-title {
-            color: var(--blue-800);
-        }
-
-        .callout-warning {
-            background: var(--warning-light);
-            border: 1px solid #fcd34d;
-        }
-
-        .callout-warning .callout-icon {
-            color: var(--warning);
-        }
-
-        .callout-warning .callout-title {
-            color: #92400e;
-        }
-
-        .callout-success {
-            background: var(--success-light);
-            border: 1px solid #6ee7b7;
-        }
-
-        .callout-success .callout-icon {
-            color: var(--success);
-        }
-
-        .callout-success .callout-title {
-            color: #065f46;
-        }
-
-        .callout-error {
-            background: var(--error-light);
-            border: 1px solid #fca5a5;
-        }
-
-        .callout-error .callout-icon {
-            color: var(--error);
-        }
-
-        .callout-error .callout-title {
-            color: #991b1b;
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge-blue {
-            background: var(--blue-100);
-            color: var(--blue-700);
-        }
-
-        .badge-green {
-            background: var(--success-light);
-            color: #065f46;
-        }
-
-        .badge-yellow {
-            background: var(--warning-light);
-            color: #92400e;
-        }
-
-        .badge-red {
-            background: var(--error-light);
-            color: #991b1b;
-        }
-
-        .badge-gray {
-            background: var(--slate-100);
             color: var(--slate-600);
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        /* Steps */
-        .steps {
-            counter-reset: step;
-            margin: 24px 0;
+        .section-dark .feature-card p {
+            color: var(--slate-400);
         }
 
-        .step {
-            position: relative;
-            padding-left: 48px;
-            padding-bottom: 24px;
-            border-left: 2px solid var(--slate-200);
-            margin-left: 15px;
+        .feature-card ul {
+            margin-top: 16px;
+            padding-left: 20px;
         }
 
-        .step:last-child {
-            border-left-color: transparent;
-            padding-bottom: 0;
+        .feature-card li {
+            color: var(--slate-600);
+            font-size: 14px;
+            margin-bottom: 8px;
         }
 
-        .step::before {
-            counter-increment: step;
-            content: counter(step);
-            position: absolute;
-            left: -17px;
-            top: 0;
+        .section-dark .feature-card li {
+            color: var(--slate-400);
+        }
+
+        /* Workflow Section */
+        .workflow {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            border: 1px solid var(--slate-200);
+            padding: 16px 24px;
+            border-radius: 12px;
+        }
+
+        .workflow-step .num {
             width: 32px;
             height: 32px;
             background: var(--blue-500);
@@ -609,195 +381,139 @@
             font-weight: 600;
         }
 
-        .step h4 {
-            margin-top: 0;
-            margin-bottom: 8px;
-        }
-
-        .step p {
-            margin: 0;
-        }
-
-        /* Keyboard shortcuts */
-        kbd {
-            display: inline-block;
-            padding: 4px 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            background: var(--slate-100);
-            border: 1px solid var(--slate-300);
-            border-radius: 6px;
-            box-shadow: 0 2px 0 var(--slate-200);
+        .workflow-step span {
+            font-weight: 500;
             color: var(--slate-700);
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
-            color: white;
-            padding: 64px;
-            border-radius: 16px;
-            margin-bottom: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--blue-500) 0%, transparent 70%);
-            opacity: 0.15;
-            transform: translate(30%, -30%);
-        }
-
-        .hero h1 {
-            color: white;
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .hero .lead {
+        .workflow-arrow {
             color: var(--slate-300);
-            font-size: 20px;
-            max-width: 600px;
+            font-size: 24px;
         }
 
-        .hero-version {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 9999px;
-            font-size: 14px;
-            margin-top: 24px;
+        /* Quick Start */
+        .quick-start {
+            background: var(--slate-100);
         }
 
-        /* Layout Diagram */
-        .layout-diagram {
+        .code-block {
             background: var(--slate-900);
             border-radius: 12px;
             padding: 24px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            color: var(--slate-300);
+            margin-top: 32px;
             overflow-x: auto;
-            margin: 24px 0;
         }
 
-        .layout-diagram .highlight {
+        .code-block pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--slate-300);
+            line-height: 1.8;
+        }
+
+        .code-block .comment {
+            color: var(--slate-500);
+        }
+
+        .code-block .command {
             color: var(--blue-400);
         }
 
-        .layout-diagram .dim {
-            color: var(--slate-600);
+        .code-block .flag {
+            color: var(--green-500);
         }
 
-        /* Workflow tabs visualization */
-        .workflow-visual {
-            display: flex;
-            gap: 8px;
-            margin: 24px 0;
-            flex-wrap: wrap;
+        .code-block .string {
+            color: var(--orange-500);
         }
 
-        .workflow-step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-500) 100%);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .cta .btn {
             background: white;
-            border: 1px solid var(--slate-200);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--slate-600);
-        }
-
-        .workflow-step .num {
-            width: 24px;
-            height: 24px;
-            background: var(--blue-100);
             color: var(--blue-600);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
         }
 
-        .workflow-arrow {
-            display: flex;
-            align-items: center;
-            color: var(--slate-300);
-            font-size: 20px;
+        .cta .btn:hover {
+            background: var(--slate-100);
         }
 
         /* Footer */
         .footer {
-            margin-top: 80px;
-            padding: 40px 0;
-            border-top: 1px solid var(--slate-200);
+            padding: 40px 24px;
+            background: var(--slate-900);
             text-align: center;
-            color: var(--slate-500);
-            font-size: 14px;
+            color: var(--slate-400);
+        }
+
+        .footer a {
+            color: var(--blue-400);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-new {
+            background: var(--green-100);
+            color: var(--green-600);
+        }
+
+        .section-dark .badge-new {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--green-500);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .sidebar {
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .nav {
                 display: none;
             }
 
-            .main {
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .main {
-                padding: 24px;
-            }
-
-            .hero {
-                padding: 32px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            h1 {
+            .section-header h2 {
                 font-size: 28px;
             }
 
-            h2 {
-                font-size: 22px;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .header, .sidebar {
-                display: none;
+            .workflow {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .main {
-                margin-left: 0;
-            }
-
-            .hero {
-                background: var(--slate-100);
-                color: var(--slate-900);
-            }
-
-            .hero h1, .hero .lead {
-                color: var(--slate-900);
+            .workflow-arrow {
+                transform: rotate(90deg);
             }
         }
     </style>
@@ -809,1442 +525,362 @@
             <a href="#" class="logo">
                 <div class="logo-icon">DC</div>
                 <span class="logo-text">DataCleaner</span>
-                <span class="logo-badge">v1.0</span>
+                <span class="logo-version">v1.0</span>
             </a>
-            <nav class="header-nav">
-                <a href="#getting-started">Getting Started</a>
+            <nav class="nav">
+                <a href="#features">Features</a>
                 <a href="#workflow">Workflow</a>
                 <a href="#cli">CLI</a>
-                <a href="#automation">Automation</a>
-                <a href="https://github.com/BrandonVanVuuren/Excel_Cleaner">GitHub</a>
+                <a href="user-guide.html">User Guide</a>
+                <a href="https://github.com/brandonvv-dev/Excel_Cleaner" target="_blank">GitHub</a>
             </nav>
         </div>
     </header>
 
-    <div class="layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-section">
-                <div class="sidebar-title">Getting Started</div>
-                <ul class="sidebar-nav">
-                    <li><a href="#getting-started"><span class="nav-number">1</span> First Launch</a></li>
-                    <li><a href="#interface"><span class="nav-number">2</span> Interface</a></li>
-                </ul>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Clean Data. <span>Clear Insights.</span></h1>
+            <p class="hero-subtitle">
+                Transform messy CSV and Excel files into clean, validated datasets ready for analysis.
+                Built for body corporate administrators and data professionals.
+            </p>
+            <div class="hero-buttons">
+                <a href="user-guide.html" class="btn btn-primary">Read User Guide</a>
+                <a href="https://github.com/brandonvv-dev/Excel_Cleaner" class="btn btn-secondary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need to Clean Data</h2>
+                <p>A complete toolkit for importing, cleaning, validating, and exporting your data files.</p>
             </div>
 
-            <div class="sidebar-section">
-                <div class="sidebar-title">Workflow</div>
-                <ul class="sidebar-nav">
-                    <li><a href="#importing"><span class="nav-number">3</span> Importing Data</a></li>
-                    <li><a href="#cleaning"><span class="nav-number">4</span> Cleaning Data</a></li>
-                    <li><a href="#deduplication"><span class="nav-number">5</span> Deduplication</a></li>
-                    <li><a href="#fuzzy-dedupe"><span class="nav-number">6</span> Fuzzy Matching</a></li>
-                    <li><a href="#validation"><span class="nav-number">7</span> Validation</a></li>
-                    <li><a href="#exporting"><span class="nav-number">8</span> Exporting</a></li>
-                    <li><a href="#sql-export"><span class="nav-number">9</span> SQL Export</a></li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-title">Advanced</div>
-                <ul class="sidebar-nav">
-                    <li><a href="#profiles">Profiles</a></li>
-                    <li><a href="#automation">Automation</a></li>
-                    <li><a href="#templates">Templates</a></li>
-                    <li><a href="#folder-watch">Folder Watch</a></li>
-                    <li><a href="#pdf-reports">PDF Reports</a></li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-title">Command Line</div>
-                <ul class="sidebar-nav">
-                    <li><a href="#cli">CLI Overview</a></li>
-                    <li><a href="#cli-clean">Clean Command</a></li>
-                    <li><a href="#cli-dedupe">Dedupe Command</a></li>
-                    <li><a href="#cli-validate">Validate Command</a></li>
-                    <li><a href="#cli-batch">Batch Processing</a></li>
-                    <li><a href="#cli-watch">Watch Mode</a></li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-title">Reference</div>
-                <ul class="sidebar-nav">
-                    <li><a href="#shortcuts">Shortcuts</a></li>
-                    <li><a href="#troubleshooting">Troubleshooting</a></li>
-                    <li><a href="#glossary">Glossary</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main">
-            <div class="content">
-                <!-- Hero -->
-                <div class="hero">
-                    <h1>DataCleaner User Guide</h1>
-                    <p class="lead">Complete guide to cleaning your CSV and Excel files with confidence. Transform messy data into structured, validated datasets ready for analysis or database import.</p>
-                    <div class="hero-version">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        Version 1.0.0
-                    </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">1</div>
+                    <h3>Smart Import</h3>
+                    <p>Drag & drop files or browse. Auto-detects encoding, delimiter, and data types.</p>
+                    <ul>
+                        <li>CSV, TSV, TXT, Excel (.xlsx)</li>
+                        <li>Auto-detect encoding (UTF-8, Windows-1252, etc.)</li>
+                        <li>Auto-detect delimiter (comma, semicolon, tab, pipe)</li>
+                        <li>Excel sheet selection</li>
+                    </ul>
                 </div>
 
-                <!-- Getting Started -->
-                <section id="getting-started">
-                    <h2>Getting Started</h2>
-
-                    <h3>First Launch</h3>
-                    <p>When you first open DataCleaner, you'll see a spotlight onboarding tour that walks you through the main features:</p>
-
-                    <div class="steps">
-                        <div class="step">
-                            <h4>Welcome</h4>
-                            <p>Introduction to DataCleaner and its capabilities</p>
-                        </div>
-                        <div class="step">
-                            <h4>Import</h4>
-                            <p>Learn how to load your data files</p>
-                        </div>
-                        <div class="step">
-                            <h4>Preview</h4>
-                            <p>Understanding the data table and column statistics</p>
-                        </div>
-                        <div class="step">
-                            <h4>Clean</h4>
-                            <p>Explore available cleaning transformations</p>
-                        </div>
-                        <div class="step">
-                            <h4>Export</h4>
-                            <p>Save your cleaned data in various formats</p>
-                        </div>
-                    </div>
-
-                    <div class="callout callout-info">
-                        <div class="callout-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                        </div>
-                        <div class="callout-content">
-                            <div class="callout-title">Replay the Tour</div>
-                            <p class="callout-text">To see the onboarding tour again, delete <code>%LOCALAPPDATA%\DataCleaner\onboarding.json</code></p>
-                        </div>
-                    </div>
-
-                    <h3>System Requirements</h3>
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">2</div>
+                    <h3>Multi-File Merge <span class="badge badge-new">NEW</span></h3>
+                    <p>Combine multiple files into one unified dataset. Perfect for consolidating monthly reports.</p>
                     <ul>
-                        <li>Windows 10 or later (64-bit)</li>
-                        <li>4 GB RAM minimum (8 GB recommended for large files)</li>
-                        <li>100 MB free disk space</li>
-                        <li>Python 3.10+ (for CLI usage)</li>
+                        <li>Stack files vertically</li>
+                        <li>Add source file column for tracking</li>
+                        <li>Handle column mismatches (union/intersection)</li>
+                        <li>Preview before merging</li>
                     </ul>
+                </div>
 
-                    <h3>File Size Limits</h3>
-                    <p>DataCleaner can handle files up to <strong>500 MB</strong>. Here's what to expect at different sizes:</p>
-
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>File Size</th>
-                                    <th>Status</th>
-                                    <th>Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>&lt; 50 MB</td>
-                                    <td><span class="badge badge-green">Optimal</span></td>
-                                    <td>Full performance with complete undo history</td>
-                                </tr>
-                                <tr>
-                                    <td>50-100 MB</td>
-                                    <td><span class="badge badge-blue">Good</span></td>
-                                    <td>Slightly slower operations</td>
-                                </tr>
-                                <tr>
-                                    <td>100-250 MB</td>
-                                    <td><span class="badge badge-yellow">Caution</span></td>
-                                    <td>Limited undo history to conserve memory</td>
-                                </tr>
-                                <tr>
-                                    <td>250-500 MB</td>
-                                    <td><span class="badge badge-yellow">Warning</span></td>
-                                    <td>Minimal undo history, consider CLI for better performance</td>
-                                </tr>
-                                <tr>
-                                    <td>&gt; 500 MB</td>
-                                    <td><span class="badge badge-red">Blocked</span></td>
-                                    <td>File too large - split into smaller parts or use CLI</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Interface -->
-                <section id="interface">
-                    <h2>The Main Interface</h2>
-
-                    <h3>Layout Overview</h3>
-                    <p>DataCleaner uses a clean, organized layout with three main areas:</p>
-
-                    <div class="layout-diagram">
-<pre class="dim">+------------------+--------------------------------+----------------+
-|                  |                                |                |
-|   <span class="highlight">Workflow Tabs</span>  |         <span class="highlight">Data Preview</span>           |    <span class="highlight">Column</span>      |
-|                  |                                |    <span class="highlight">Statistics</span>  |
-|   1. Import      |   (Your data appears here)     |                |
-|   2. Clean       |                                |    - Type      |
-|   3. Dedupe      +--------------------------------+    - Nulls     |
-|   4. Validate    |  Output | Warnings | Changes   |    - Unique    |
-|   5. Export      |                                |    - Top Values|
-|   6. SQL Export  |  (Collapsible bottom panel)    |                |
-|   7. Automation  |                                |                |
-|                  |                                |                |
-+------------------+--------------------------------+----------------+</pre>
-                    </div>
-
-                    <h3>Workflow Tabs</h3>
-                    <p>Work through tabs from top to bottom for the complete cleaning workflow:</p>
-
-                    <div class="workflow-visual">
-                        <div class="workflow-step"><span class="num">1</span> Import</div>
-                        <div class="workflow-arrow">&#8594;</div>
-                        <div class="workflow-step"><span class="num">2</span> Clean</div>
-                        <div class="workflow-arrow">&#8594;</div>
-                        <div class="workflow-step"><span class="num">3</span> Dedupe</div>
-                        <div class="workflow-arrow">&#8594;</div>
-                        <div class="workflow-step"><span class="num">4</span> Validate</div>
-                        <div class="workflow-arrow">&#8594;</div>
-                        <div class="workflow-step"><span class="num">5</span> Export</div>
-                    </div>
-
-                    <h3>Data Preview</h3>
-                    <p>The center panel shows your data in a scrollable table:</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">3</div>
+                    <h3>Powerful Cleaning</h3>
+                    <p>Apply transformations to standardize your data automatically.</p>
                     <ul>
-                        <li>Click column headers to see detailed statistics</li>
-                        <li>Hover over cells to see full values</li>
-                        <li>Table updates automatically after each operation</li>
-                        <li>Row counts and column counts displayed in status bar</li>
+                        <li>Trim whitespace from all cells</li>
+                        <li>Remove empty rows</li>
+                        <li>Normalize 40+ null tokens (N/A, null, -, etc.)</li>
+                        <li>Standardize headers (lowercase, underscores)</li>
                     </ul>
+                </div>
 
-                    <h3>Column Statistics</h3>
-                    <p>When you select a column, the right panel shows:</p>
-
-                    <div class="card-grid">
-                        <div class="feature-card">
-                            <div class="icon">&#128202;</div>
-                            <h4>Data Type</h4>
-                            <p>String, Integer, Float, Date, Boolean, etc.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">&#9888;&#65039;</div>
-                            <h4>Null Count</h4>
-                            <p>Number of empty or null values</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">&#128290;</div>
-                            <h4>Unique Count</h4>
-                            <p>Number of distinct values</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">&#128200;</div>
-                            <h4>Top Values</h4>
-                            <p>Most frequent values with counts</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Importing -->
-                <section id="importing">
-                    <h2>Importing Data</h2>
-
-                    <h3>Supported File Types</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Extension</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>.csv</code></td>
-                                    <td>Comma-separated values</td>
-                                </tr>
-                                <tr>
-                                    <td><code>.tsv</code></td>
-                                    <td>Tab-separated values</td>
-                                </tr>
-                                <tr>
-                                    <td><code>.txt</code></td>
-                                    <td>Plain text (auto-detect delimiter)</td>
-                                </tr>
-                                <tr>
-                                    <td><code>.xlsx</code></td>
-                                    <td>Excel 2007+ workbook</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>How to Import</h3>
-
-                    <div class="card">
-                        <h4>Method 1: Drag and Drop</h4>
-                        <p>Simply drag a file from Windows Explorer onto the DataCleaner window.</p>
-                    </div>
-
-                    <div class="card">
-                        <h4>Method 2: Browse Button</h4>
-                        <ol>
-                            <li>Go to the <strong>Import</strong> tab</li>
-                            <li>Click <strong>Browse...</strong></li>
-                            <li>Select your file</li>
-                            <li>Click <strong>Open</strong></li>
-                        </ol>
-                    </div>
-
-                    <div class="card">
-                        <h4>Method 3: Keyboard Shortcut</h4>
-                        <p>Press <kbd>Ctrl</kbd> + <kbd>O</kbd> to open the file dialog.</p>
-                    </div>
-
-                    <h3>Import Options</h3>
-                    <p>After selecting a file, you can adjust these settings:</p>
-
-                    <h4>For CSV/TSV/TXT files:</h4>
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">4</div>
+                    <h3>Auto Format <span class="badge badge-new">NEW</span></h3>
+                    <p>Smart number and date formatting with column-level control.</p>
                     <ul>
-                        <li><strong>Encoding</strong> - Usually auto-detected (UTF-8, Windows-1252, etc.)</li>
-                        <li><strong>Delimiter</strong> - Usually auto-detected (comma, semicolon, tab, pipe)</li>
-                        <li><strong>Has Header</strong> - Whether first row contains column names</li>
+                        <li>Fix European decimals (1.234,56 to 1234.56)</li>
+                        <li>Convert dates to ISO format (YYYY-MM-DD)</li>
+                        <li>Per-column format settings</li>
+                        <li>Preview before applying</li>
                     </ul>
+                </div>
 
-                    <h4>For Excel files:</h4>
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">5</div>
+                    <h3>Smart Deduplication <span class="badge badge-new">NEW</span></h3>
+                    <p>Remove exact and fuzzy duplicates with intelligent matching algorithms.</p>
                     <ul>
-                        <li><strong>Sheet</strong> - Select which worksheet to import</li>
+                        <li><strong>Exact matching</strong> - All columns or key columns</li>
+                        <li><strong>Jaro-Winkler</strong> - Best for person names</li>
+                        <li><strong>Levenshtein</strong> - Edit distance for typos</li>
+                        <li><strong>Soundex/Metaphone</strong> - Phonetic matching</li>
+                        <li>Keep strategy: first, last, or most complete</li>
                     </ul>
+                </div>
 
-                    <div class="callout callout-success">
-                        <div class="callout-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                        </div>
-                        <div class="callout-content">
-                            <div class="callout-title">Auto-Detection</div>
-                            <p class="callout-text">DataCleaner automatically detects file encoding, delimiter, quote style, header rows, and column data types. Manual override is available if detection fails.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Cleaning -->
-                <section id="cleaning">
-                    <h2>Cleaning Data</h2>
-
-                    <p>Go to the <strong>Clean</strong> tab to apply transformations to your data.</p>
-
-                    <h3>Available Transformations</h3>
-
-                    <div class="card">
-                        <h4>Whitespace Trimming</h4>
-                        <p>Removes leading and trailing spaces from all text values.</p>
-                        <div class="code-header"><span class="code-lang">Example</span></div>
-                        <pre><code>Before: "  John Smith  "
-After:  "John Smith"</code></pre>
-                        <p><strong>When to use:</strong> Almost always - extra spaces cause matching and sorting issues.</p>
-                    </div>
-
-                    <div class="card">
-                        <h4>Empty Row Removal</h4>
-                        <p>Removes rows where ALL columns are empty or null.</p>
-                        <p><strong>When to use:</strong> When your data has blank rows between records.</p>
-                    </div>
-
-                    <div class="card">
-                        <h4>Null Token Normalization</h4>
-                        <p>Converts various representations of "empty" to actual null values.</p>
-                        <p><strong>Recognized tokens include:</strong></p>
-                        <ul>
-                            <li>Empty string, <code>NULL</code>, <code>null</code>, <code>Null</code></li>
-                            <li><code>N/A</code>, <code>NA</code>, <code>n/a</code>, <code>na</code></li>
-                            <li><code>None</code>, <code>NONE</code>, <code>-</code>, <code>--</code></li>
-                            <li><code>#N/A</code>, <code>#VALUE!</code>, <code>undefined</code></li>
-                            <li>And 40+ more variations</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h4>Header Normalization</h4>
-                        <p>Cleans up column names with these options:</p>
-                        <ul>
-                            <li><strong>Trim</strong> - Remove spaces from column names</li>
-                            <li><strong>Lowercase</strong> - Convert to lowercase</li>
-                            <li><strong>Replace Spaces</strong> - Convert spaces to underscores</li>
-                            <li><strong>Remove Special Characters</strong> - Remove <code>/</code>, <code>\</code>, <code>*</code></li>
-                            <li><strong>Deduplicate Names</strong> - Add numbers to duplicate column names</li>
-                        </ul>
-                        <div class="code-header"><span class="code-lang">Example</span></div>
-                        <pre><code>Before: "First Name ", "First Name", "order/date"
-After:  "first_name", "first_name_2", "order_date"</code></pre>
-                    </div>
-
-                    <div class="card">
-                        <h4>Numeric Normalization</h4>
-                        <p>Standardizes number formats:</p>
-                        <ul>
-                            <li>European decimals: <code>1.234,56</code> &#8594; <code>1234.56</code></li>
-                            <li>Thousand separators: <code>1,000,000</code> &#8594; <code>1000000</code></li>
-                        </ul>
-                        <div class="callout callout-warning">
-                            <div class="callout-icon">&#9888;&#65039;</div>
-                            <div class="callout-content">
-                                <div class="callout-title">Ambiguous Values</div>
-                                <p class="callout-text">Values like <code>1,234</code> (is it 1234 or 1.234?) are preserved as text unless confidence is high.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h4>Date Normalization</h4>
-                        <p>Converts dates to ISO format (YYYY-MM-DD).</p>
-                        <p><strong>Supported input formats:</strong></p>
-                        <ul>
-                            <li><code>01/02/2024</code> (respects day-first setting)</li>
-                            <li><code>2024-01-02</code></li>
-                            <li><code>Jan 2, 2024</code></li>
-                            <li><code>02-Jan-2024</code></li>
-                        </ul>
-                        <p><strong>Output format:</strong> <code>2024-01-02</code></p>
-                    </div>
-                </section>
-
-                <!-- Deduplication -->
-                <section id="deduplication">
-                    <h2>Removing Duplicates</h2>
-
-                    <h3>What is a Duplicate?</h3>
-                    <p>A duplicate is a row that matches another row. You can define what "matches" means:</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">6</div>
+                    <h3>Data Validation</h3>
+                    <p>Verify data quality before exporting with configurable rules.</p>
                     <ul>
-                        <li><strong>Exact duplicates</strong> - All columns must match</li>
-                        <li><strong>Key-based duplicates</strong> - Only specified columns must match</li>
-                        <li><strong>Fuzzy duplicates</strong> - Similar values that might be typos (see Fuzzy Matching)</li>
+                        <li>Required column check</li>
+                        <li>Non-null validation</li>
+                        <li>Email format validation</li>
+                        <li>Date/numeric validation</li>
+                        <li>Regex pattern matching</li>
+                        <li>Unique value check</li>
                     </ul>
+                </div>
 
-                    <h3>Keep Strategy</h3>
-                    <p>When duplicates are found, which one to keep?</p>
-
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Strategy</th>
-                                    <th>Keeps</th>
-                                    <th>Use When</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>First</strong></td>
-                                    <td>First occurrence</td>
-                                    <td>Original order matters</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Last</strong></td>
-                                    <td>Last occurrence</td>
-                                    <td>Latest is most current</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Most Complete</strong></td>
-                                    <td>Row with fewest nulls</td>
-                                    <td>Data quality varies between records</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>How to Deduplicate</h3>
-                    <div class="steps">
-                        <div class="step">
-                            <h4>Go to Dedupe Tab</h4>
-                            <p>Navigate to the Dedupe tab in the workflow panel</p>
-                        </div>
-                        <div class="step">
-                            <h4>Select Key Columns</h4>
-                            <p>Choose which columns define uniqueness (e.g., email, id)</p>
-                        </div>
-                        <div class="step">
-                            <h4>Choose Keep Strategy</h4>
-                            <p>Select First, Last, or Most Complete</p>
-                        </div>
-                        <div class="step">
-                            <h4>Preview and Apply</h4>
-                            <p>Review the duplicates found, then click Remove Duplicates</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Fuzzy Deduplication -->
-                <section id="fuzzy-dedupe">
-                    <h2>Fuzzy Matching (Smart Duplicates)</h2>
-
-                    <p>Fuzzy matching catches near-duplicates that exact matching would miss. Perfect for catching typos and variations like:</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-orange">7</div>
+                    <h3>Diff Preview <span class="badge badge-new">NEW</span></h3>
+                    <p>See exactly what changed before and after cleaning. Show your manager in 5 seconds.</p>
                     <ul>
-                        <li>"John Smith" vs "Jon Smith"</li>
-                        <li>"123 Main St" vs "123 Main Street"</li>
-                        <li>"ACME Corp" vs "Acme Corporation"</li>
+                        <li>Cell-by-cell comparison</li>
+                        <li>Row addition/removal tracking</li>
+                        <li>Color-coded output (red=removed, green=added)</li>
+                        <li>Export to HTML or PDF</li>
                     </ul>
+                </div>
 
-                    <h3>Similarity Algorithms</h3>
-
-                    <div class="card-grid">
-                        <div class="feature-card">
-                            <h4>Jaro-Winkler</h4>
-                            <p>Best for person names. Gives extra weight to matching prefixes. Use for names like "Robert" vs "Rob".</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Levenshtein</h4>
-                            <p>Edit distance algorithm. Catches typos and small character differences. Good general-purpose.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Soundex</h4>
-                            <p>Phonetic matching. Finds words that sound similar like "Smith" vs "Smyth".</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Metaphone</h4>
-                            <p>Advanced phonetic matching. Better than Soundex for non-English names.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>N-gram</h4>
-                            <p>Character overlap analysis. Good for addresses and company names.</p>
-                        </div>
-                    </div>
-
-                    <h3>Configuration Options</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Option</th>
-                                    <th>Description</th>
-                                    <th>Default</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Threshold</strong></td>
-                                    <td>Minimum similarity score (0.0 to 1.0) to consider a match</td>
-                                    <td>0.85</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Match Columns</strong></td>
-                                    <td>Columns to compare for similarity</td>
-                                    <td>Required</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Exact Match Columns</strong></td>
-                                    <td>Columns that must match exactly (blocking)</td>
-                                    <td>Optional</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Case Insensitive</strong></td>
-                                    <td>Ignore case when comparing</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Ignore Titles</strong></td>
-                                    <td>Remove Mr, Mrs, Dr, etc. before comparing</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Column Weights</strong></td>
-                                    <td>Give certain columns more importance</td>
-                                    <td>Equal</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="callout callout-info">
-                        <div class="callout-icon">&#128161;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">Performance Tip</div>
-                            <p class="callout-text">Use "Exact Match Columns" (blocking) to speed up fuzzy matching. For example, if matching customers, block on postal code - only rows with the same postal code will be compared.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Validation -->
-                <section id="validation">
-                    <h2>Validating Data</h2>
-
-                    <h3>Why Validate?</h3>
-                    <p>Validation helps you catch data quality issues before using your data:</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-orange">8</div>
+                    <h3>SQL Export</h3>
+                    <p>Generate SQL INSERT statements for database loading.</p>
                     <ul>
-                        <li>Missing required values</li>
-                        <li>Invalid email addresses</li>
-                        <li>Wrong date formats</li>
-                        <li>Unexpected values</li>
+                        <li>Define target table structure</li>
+                        <li>Map columns to SQL types</li>
+                        <li>Transaction wrapping (BEGIN/COMMIT)</li>
+                        <li>IDENTITY_INSERT support</li>
+                        <li>Batch GO statements</li>
                     </ul>
-
-                    <h3>Available Validation Rules</h3>
-
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Rule</th>
-                                    <th>Description</th>
-                                    <th>Example</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Required Column</strong></td>
-                                    <td>Column must exist in data</td>
-                                    <td>Ensure <code>customer_id</code> wasn't lost</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Non-Null</strong></td>
-                                    <td>No empty values allowed</td>
-                                    <td>Required fields like <code>email</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Email Format</strong></td>
-                                    <td>Valid email structure</td>
-                                    <td><code>user@domain.com</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Date Valid</strong></td>
-                                    <td>Parseable as date</td>
-                                    <td>Verify date columns</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Numeric Valid</strong></td>
-                                    <td>Valid numbers only</td>
-                                    <td>Price, quantity columns</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Regex Match</strong></td>
-                                    <td>Custom pattern</td>
-                                    <td>Phone: <code>^\d{10}$</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Value in List</strong></td>
-                                    <td>Allowed values only</td>
-                                    <td>Status: active, pending, closed</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Unique</strong></td>
-                                    <td>No duplicates</td>
-                                    <td>Verify <code>id</code> uniqueness</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>Validation Results</h3>
-                    <p>After running validation, you'll see:</p>
-                    <ul>
-                        <li>Overall pass/fail status</li>
-                        <li>Number of rows failing each rule</li>
-                        <li>List of specific failing values</li>
-                        <li>Option to export validation report</li>
-                    </ul>
-                </section>
-
-                <!-- Exporting -->
-                <section id="exporting">
-                    <h2>Exporting Data</h2>
-
-                    <h3>Export Formats</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Format</th>
-                                    <th>Extension</th>
-                                    <th>Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>CSV</td>
-                                    <td><code>.csv</code></td>
-                                    <td>Universal, text-based format</td>
-                                </tr>
-                                <tr>
-                                    <td>Excel</td>
-                                    <td><code>.xlsx</code></td>
-                                    <td>Formatted workbook with styling</td>
-                                </tr>
-                                <tr>
-                                    <td>SQL Script</td>
-                                    <td><code>.sql</code></td>
-                                    <td>INSERT statements for database import</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>CSV Injection Protection</h3>
-                    <div class="callout callout-warning">
-                        <div class="callout-icon">&#128737;&#65039;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">Security Feature</div>
-                            <p class="callout-text">Without protection, a value like <code>=SUM(A1:A10)</code> could execute as a formula when opened in Excel. Protection adds a single quote prefix: <code>'=SUM(A1:A10)</code></p>
-                        </div>
-                    </div>
-
-                    <h3>Export with Reports</h3>
-                    <p>Check <strong>Include Reports</strong> to generate:</p>
-                    <ul>
-                        <li><code>change_report.json</code> - Detailed JSON of all changes</li>
-                        <li><code>summary.txt</code> - Human-readable summary</li>
-                        <li><code>validation.json</code> - Validation results (if run)</li>
-                    </ul>
-                </section>
-
-                <!-- SQL Export -->
-                <section id="sql-export">
-                    <h2>SQL Export</h2>
-
-                    <p>Generate SQL INSERT statements to load your cleaned data directly into a SQL Server database.</p>
-
-                    <h3>Setting Up SQL Export</h3>
-
-                    <div class="steps">
-                        <div class="step">
-                            <h4>Go to SQL Export Tab</h4>
-                            <p>Navigate to the SQL Export tab in the workflow panel</p>
-                        </div>
-                        <div class="step">
-                            <h4>Define Target Table</h4>
-                            <p>Enter the table name and schema where data will be inserted (e.g., <code>dbo.customers</code>)</p>
-                        </div>
-                        <div class="step">
-                            <h4>Define Target Columns</h4>
-                            <p>Add each target column with its SQL data type</p>
-                        </div>
-                        <div class="step">
-                            <h4>Map Source to Target</h4>
-                            <p>For each target column, select which source column maps to it</p>
-                        </div>
-                        <div class="step">
-                            <h4>Preview and Export</h4>
-                            <p>Preview the generated SQL, then export to a .sql file</p>
-                        </div>
-                    </div>
-
-                    <h3>Supported SQL Data Types</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Types</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>String</strong></td>
-                                    <td><code>VARCHAR</code>, <code>NVARCHAR</code>, <code>CHAR</code>, <code>NCHAR</code>, <code>TEXT</code>, <code>NTEXT</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Numeric</strong></td>
-                                    <td><code>INT</code>, <code>BIGINT</code>, <code>SMALLINT</code>, <code>TINYINT</code>, <code>DECIMAL</code>, <code>MONEY</code>, <code>FLOAT</code>, <code>REAL</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Boolean</strong></td>
-                                    <td><code>BIT</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Date/Time</strong></td>
-                                    <td><code>DATE</code>, <code>DATETIME</code>, <code>DATETIME2</code>, <code>TIME</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Other</strong></td>
-                                    <td><code>UNIQUEIDENTIFIER</code> (GUID)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>Generated SQL Features</h3>
-                    <ul>
-                        <li><strong>Transaction Wrapping</strong> - All inserts wrapped in BEGIN/COMMIT with rollback on error</li>
-                        <li><strong>Batch Processing</strong> - GO statements every 1000 rows for large datasets</li>
-                        <li><strong>Identity Insert</strong> - Automatically handles IDENTITY columns</li>
-                        <li><strong>Error Handling</strong> - TRY/CATCH with detailed error messages</li>
-                        <li><strong>Unicode Support</strong> - N'' prefix for NVARCHAR columns</li>
-                        <li><strong>Null Handling</strong> - Empty values converted to SQL NULL</li>
-                    </ul>
-
-                    <h3>Example Output</h3>
-                    <div class="code-header"><span class="code-lang">SQL</span></div>
-                    <pre><code>-- DataCleaner SQL Export
--- Generated: 2024-01-15 14:30:00
--- Target Table: dbo.customers
--- Total Rows: 1500
-
-SET NOCOUNT ON;
-SET XACT_ABORT ON;
-
-BEGIN TRY
-    BEGIN TRANSACTION;
-
-    INSERT INTO dbo.customers ([id], [name], [email])
-    VALUES (1, N'John Smith', 'john@example.com');
-
-    INSERT INTO dbo.customers ([id], [name], [email])
-    VALUES (2, N'Jane Doe', 'jane@example.com');
-
-    -- ... more rows ...
-
-    COMMIT TRANSACTION;
-    PRINT 'Successfully inserted 1500 rows into dbo.customers';
-END TRY
-BEGIN CATCH
-    IF @@TRANCOUNT > 0
-        ROLLBACK TRANSACTION;
-
-    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
-    RAISERROR(@ErrorMessage, 16, 1);
-END CATCH;
-
-GO</code></pre>
-                </section>
-
-                <!-- Profiles -->
-                <section id="profiles">
-                    <h2>Working with Profiles</h2>
-
-                    <h3>What is a Profile?</h3>
-                    <p>A cleaning profile saves all your settings so you can reuse them:</p>
-                    <ul>
-                        <li>Which transformations to apply</li>
-                        <li>Header normalization options</li>
-                        <li>Null token list</li>
-                        <li>Validation rules</li>
-                        <li>Export settings</li>
-                    </ul>
-
-                    <h3>Managing Profiles</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Action</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Create</strong></td>
-                                    <td>Save current settings as a new profile</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Load</strong></td>
-                                    <td>Apply a saved profile's settings</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Delete</strong></td>
-                                    <td>Remove a saved profile</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Export</strong></td>
-                                    <td>Save profile to a JSON file (for sharing)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Import</strong></td>
-                                    <td>Load profile from a JSON file</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="callout callout-info">
-                        <div class="callout-icon">&#128193;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">Profile Location</div>
-                            <p class="callout-text">Profiles are stored in: <code>%LOCALAPPDATA%\DataCleaner\profiles\</code></p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Automation -->
-                <section id="automation">
-                    <h2>Automation</h2>
-
-                    <p>The Automation tab provides powerful tools for repetitive data cleaning tasks:</p>
-
-                    <div class="card-grid">
-                        <div class="feature-card">
-                            <div class="icon">&#128196;</div>
-                            <h4>Templates</h4>
-                            <p>Save complete workflows for one-click execution</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">&#128193;</div>
-                            <h4>Profiles</h4>
-                            <p>Reusable cleaning configuration presets</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">&#128065;</div>
-                            <h4>Folder Watch</h4>
-                            <p>Auto-process files dropped into watched folders</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Templates -->
-                <section id="templates">
-                    <h2>Workflow Templates</h2>
-
-                    <p>Templates save complete workflows for one-click execution. Perfect for recurring tasks like monthly imports.</p>
-
-                    <h3>Template Configuration</h3>
-                    <ul>
-                        <li><strong>Name</strong> - Descriptive name (e.g., "Monthly Tenant Import")</li>
-                        <li><strong>Description</strong> - Notes about what this template does</li>
-                        <li><strong>Cleaning Profile</strong> - Which profile to apply</li>
-                        <li><strong>Target Table</strong> - SQL table for export (optional)</li>
-                        <li><strong>Export Format</strong> - CSV, Excel, or SQL Script</li>
-                        <li><strong>Generate PDF Report</strong> - Include a compliance report</li>
-                    </ul>
-
-                    <h3>Using Templates</h3>
-                    <div class="steps">
-                        <div class="step">
-                            <h4>Create a Template</h4>
-                            <p>Go to Automation > Templates, click New, configure settings, and Save</p>
-                        </div>
-                        <div class="step">
-                            <h4>Run a Template</h4>
-                            <p>Select your template and click "Run Template Now"</p>
-                        </div>
-                        <div class="step">
-                            <h4>Select Input File</h4>
-                            <p>Choose the file to process</p>
-                        </div>
-                        <div class="step">
-                            <h4>Automatic Processing</h4>
-                            <p>The template runs all steps and exports results automatically</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Folder Watch -->
-                <section id="folder-watch">
-                    <h2>Folder Watch</h2>
-
-                    <p>Folder Watch is the "killer feature" for recurring tasks. Drop files into a watched folder and DataCleaner processes them automatically.</p>
-
-                    <h3>How It Works</h3>
-                    <ol>
-                        <li>Configure a watch folder and output folder</li>
-                        <li>Select a template to apply</li>
-                        <li>Start watching</li>
-                        <li>Drop files into the watch folder</li>
-                        <li>Cleaned files + SQL scripts appear in output folder automatically</li>
-                    </ol>
-
-                    <h3>Watch Configuration</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Setting</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Watch Folder</strong></td>
-                                    <td>Folder to monitor for new files</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Output Folder</strong></td>
-                                    <td>Where cleaned files are saved</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Template</strong></td>
-                                    <td>Workflow template to apply</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>File Patterns</strong></td>
-                                    <td>Which files to process (e.g., <code>*.csv, *.xlsx</code>)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Check Interval</strong></td>
-                                    <td>How often to check for new files (default: 30 seconds)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Archive Originals</strong></td>
-                                    <td>Move processed files to archive folder</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h3>Notifications</h3>
-                    <p>When files are processed, you'll receive:</p>
-                    <ul>
-                        <li>System tray notification</li>
-                        <li>Status update in the Folder Watch panel</li>
-                        <li>Log entry with processing details</li>
-                    </ul>
-
-                    <div class="callout callout-success">
-                        <div class="callout-icon">&#128161;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">Use Case: Monthly Levy Imports</div>
-                            <p class="callout-text">Set up a watch folder on a shared drive. When the property manager drops the monthly levy CSV, it's automatically cleaned, validated, and ready for SQL import - no manual intervention needed.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- PDF Reports -->
-                <section id="pdf-reports">
-                    <h2>PDF Reports</h2>
-
-                    <p>Generate professional PDF reports for compliance and audit trails.</p>
-
-                    <h3>Report Sections</h3>
-                    <ul>
-                        <li><strong>Executive Summary</strong> - Rows processed, changes made, overall status</li>
-                        <li><strong>Source File Information</strong> - File name, size, encoding, import time</li>
-                        <li><strong>Processing Steps</strong> - Each cleaning operation with row counts</li>
-                        <li><strong>Validation Results</strong> - Pass/fail for each rule</li>
-                        <li><strong>Column Statistics</strong> - Data types, null counts, unique values</li>
-                    </ul>
-
-                    <h3>Branding Options</h3>
-                    <ul>
-                        <li>Company name</li>
-                        <li>Primary and secondary colors</li>
-                        <li>Custom footer text</li>
-                    </ul>
-
-                    <div class="callout callout-info">
-                        <div class="callout-icon">&#128196;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">HTML Fallback</div>
-                            <p class="callout-text">If the reportlab library isn't installed, reports are generated as styled HTML files instead. Install reportlab for PDF support: <code>pip install reportlab</code></p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CLI -->
-                <section id="cli">
-                    <h2>Command-Line Interface</h2>
-
-                    <p>DataCleaner includes a powerful CLI for automation and scripting. All GUI features are available via command line.</p>
-
-                    <h3>Basic Usage</h3>
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># Show version
-datacleaner --version
-
-# Show help
-datacleaner --help
-
-# Launch GUI explicitly
-datacleaner --gui</code></pre>
-
-                    <h3>Available Commands</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Command</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>clean</code></td>
-                                    <td>Clean a single file</td>
-                                </tr>
-                                <tr>
-                                    <td><code>dedupe</code></td>
-                                    <td>Remove duplicates from a file</td>
-                                </tr>
-                                <tr>
-                                    <td><code>validate</code></td>
-                                    <td>Validate data against rules</td>
-                                </tr>
-                                <tr>
-                                    <td><code>export</code></td>
-                                    <td>Export to different formats</td>
-                                </tr>
-                                <tr>
-                                    <td><code>batch</code></td>
-                                    <td>Process multiple files with glob patterns</td>
-                                </tr>
-                                <tr>
-                                    <td><code>watch</code></td>
-                                    <td>Watch a folder for new files</td>
-                                </tr>
-                                <tr>
-                                    <td><code>profile</code></td>
-                                    <td>Manage cleaning profiles</td>
-                                </tr>
-                                <tr>
-                                    <td><code>info</code></td>
-                                    <td>Show file information</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- CLI Clean -->
-                <section id="cli-clean">
-                    <h3>Clean Command</h3>
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># Using a profile
-datacleaner clean data.csv --profile monthly --output cleaned.csv
-
-# Using individual options
-datacleaner clean data.csv --trim --normalize-nulls -o cleaned.csv
-
-# Preview changes without writing
-datacleaner clean data.csv --dry-run
-
-# Output as JSON for scripting
-datacleaner clean data.csv --json</code></pre>
-                </section>
-
-                <!-- CLI Dedupe -->
-                <section id="cli-dedupe">
-                    <h3>Dedupe Command</h3>
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># By specific columns
-datacleaner dedupe data.csv --columns email --keep first -o deduped.csv
-
-# By all columns (exact duplicates)
-datacleaner dedupe data.csv --keep most_complete
-
-# Preview duplicates
-datacleaner dedupe data.csv --dry-run</code></pre>
-                </section>
-
-                <!-- CLI Validate -->
-                <section id="cli-validate">
-                    <h3>Validate Command</h3>
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># Email validation
-datacleaner validate data.csv --email email_col
-
-# Multiple rules
-datacleaner validate data.csv --required name,id --unique id
-
-# With JSON output for CI/CD
-datacleaner validate data.csv --email email --json</code></pre>
-                </section>
-
-                <!-- CLI Batch -->
-                <section id="cli-batch">
-                    <h3>Batch Processing</h3>
-                    <p>Process multiple files at once with glob patterns.</p>
-
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># Clean all CSV files in a folder
-datacleaner batch clean "data/*.csv" --profile monthly --output cleaned/
-
-# With parallel processing (4 workers)
-datacleaner batch clean "data/*.csv" --parallel 4 --output cleaned/
-
-# Recursive search with continue on error
-datacleaner batch clean "**/*.csv" --continue-on-error --output cleaned/
-
-# Batch dedupe
-datacleaner batch dedupe "data/*.csv" --columns id --output deduped/
-
-# Batch validate with summary
-datacleaner batch validate "data/*.csv" --required name,email --summary</code></pre>
-
-                    <h4>Batch Options</h4>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Option</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>--parallel N</code></td>
-                                    <td>Process N files simultaneously</td>
-                                </tr>
-                                <tr>
-                                    <td><code>--continue-on-error</code></td>
-                                    <td>Don't stop if one file fails</td>
-                                </tr>
-                                <tr>
-                                    <td><code>--json</code></td>
-                                    <td>Output results as JSON</td>
-                                </tr>
-                                <tr>
-                                    <td><code>--quiet</code></td>
-                                    <td>Minimal output</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- CLI Watch -->
-                <section id="cli-watch">
-                    <h3>Watch Mode</h3>
-                    <p>Run the folder watcher from command line.</p>
-
-                    <div class="code-header"><span class="code-lang">bash</span></div>
-                    <pre><code># Watch a folder
-datacleaner watch ./inbox --profile auto_clean --output ./processed
-
-# With archive of originals
-datacleaner watch ./inbox --output ./processed --move-originals ./archive
-
-# Specify file patterns
-datacleaner watch ./inbox --patterns "*.csv,*.xlsx" --output ./processed</code></pre>
-                </section>
-
-                <!-- Exit Codes -->
-                <section id="exit-codes">
-                    <h3>Exit Codes</h3>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Meaning</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>0</code></td>
-                                    <td>Success - all operations/validations passed</td>
-                                </tr>
-                                <tr>
-                                    <td><code>1</code></td>
-                                    <td>Error - file not found, permission denied, etc.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>2</code></td>
-                                    <td>Validation failures - some rules failed</td>
-                                </tr>
-                                <tr>
-                                    <td><code>3</code></td>
-                                    <td>Batch error - some files failed</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Shortcuts -->
-                <section id="shortcuts">
-                    <h2>Keyboard Shortcuts</h2>
-
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Shortcut</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><kbd>Ctrl</kbd> + <kbd>O</kbd></td>
-                                    <td>Open file</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>Ctrl</kbd> + <kbd>S</kbd></td>
-                                    <td>Save/Export</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td>
-                                    <td>Undo</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td>
-                                    <td>Redo</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td>
-                                    <td>Save As (different format)</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>F5</kbd></td>
-                                    <td>Refresh data preview</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd>Alt</kbd> + <kbd>F4</kbd></td>
-                                    <td>Exit</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Troubleshooting -->
-                <section id="troubleshooting">
-                    <h2>Troubleshooting</h2>
-
-                    <h3>Import Issues</h3>
-
-                    <div class="callout callout-error">
-                        <div class="callout-icon">&#10060;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">"Encoding detection failed"</div>
-                            <p class="callout-text">Try manually selecting an encoding (UTF-8, Windows-1252). Open in Notepad++, check encoding in bottom-right.</p>
-                        </div>
-                    </div>
-
-                    <div class="callout callout-error">
-                        <div class="callout-icon">&#10060;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">"Delimiter not detected"</div>
-                            <p class="callout-text">Manually specify the delimiter. Check if file has inconsistent formatting.</p>
-                        </div>
-                    </div>
-
-                    <div class="callout callout-error">
-                        <div class="callout-icon">&#10060;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">"File too large"</div>
-                            <p class="callout-text">Split the file into smaller parts or use the CLI for better memory handling.</p>
-                        </div>
-                    </div>
-
-                    <h3>Export Issues</h3>
-
-                    <div class="callout callout-error">
-                        <div class="callout-icon">&#10060;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">"Cannot write file"</div>
-                            <p class="callout-text">Close the file in Excel or other applications. Check write permissions on the folder.</p>
-                        </div>
-                    </div>
-
-                    <h3>SQL Export Issues</h3>
-
-                    <div class="callout callout-error">
-                        <div class="callout-icon">&#10060;</div>
-                        <div class="callout-content">
-                            <div class="callout-title">"Required column not mapped"</div>
-                            <p class="callout-text">Ensure all non-nullable columns in the target table have a source column mapped.</p>
-                        </div>
-                    </div>
-
-                    <h3>Getting Help</h3>
-                    <ol>
-                        <li>Check the warnings panel for details</li>
-                        <li>Look in the log file: <code>%LOCALAPPDATA%\DataCleaner\logs\app.log</code></li>
-                        <li>Report issues at: <a href="https://github.com/BrandonVanVuuren/Excel_Cleaner/issues">GitHub Issues</a></li>
-                    </ol>
-                </section>
-
-                <!-- Glossary -->
-                <section id="glossary">
-                    <h2>Glossary</h2>
-
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Term</th>
-                                    <th>Definition</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Blocking</strong></td>
-                                    <td>Grouping rows by exact match columns before fuzzy comparison (performance optimization)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>CLI</strong></td>
-                                    <td>Command-Line Interface - text-based way to run DataCleaner</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>CSV</strong></td>
-                                    <td>Comma-Separated Values, a text file format for tabular data</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Delimiter</strong></td>
-                                    <td>Character separating columns (comma, semicolon, tab)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Encoding</strong></td>
-                                    <td>How text characters are stored (UTF-8, Windows-1252)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Fuzzy Matching</strong></td>
-                                    <td>Finding similar (not exact) values using algorithms</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Null</strong></td>
-                                    <td>Empty or missing value</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Profile</strong></td>
-                                    <td>Saved cleaning configuration for reuse</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Template</strong></td>
-                                    <td>Complete workflow configuration including profile, export, and SQL settings</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Threshold</strong></td>
-                                    <td>Minimum similarity score for fuzzy matching (0.0 to 1.0)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Validation Rule</strong></td>
-                                    <td>A check applied to data to verify quality</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Footer -->
-                <footer class="footer">
-                    <p><strong>DataCleaner</strong> - Clean data, clear insights.</p>
-                    <p>Copyright 2024 Brandon van Vuuren. All rights reserved.</p>
-                </footer>
+                </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </section>
 
-    <script>
-        // Highlight active sidebar link on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
+    <!-- Advanced Features -->
+    <section class="section section-dark" id="advanced">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Automation Features</h2>
+                <p>Save time with profiles, templates, and automated folder watching.</p>
+            </div>
 
-        function updateActiveLink() {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">9</div>
+                    <h3>Cleaning Profiles</h3>
+                    <p>Save your cleaning settings and reuse them across files.</p>
+                    <ul>
+                        <li>Save all transformation settings</li>
+                        <li>Export/import profiles as JSON</li>
+                        <li>Share profiles with team members</li>
+                        <li>Apply via GUI or CLI</li>
+                    </ul>
+                </div>
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">10</div>
+                    <h3>Workflow Templates <span class="badge badge-new">NEW</span></h3>
+                    <p>Complete workflow presets for one-click execution.</p>
+                    <ul>
+                        <li>Combine profile + export settings</li>
+                        <li>Define target table for SQL</li>
+                        <li>Run entire workflow with one click</li>
+                        <li>Use with folder watching</li>
+                    </ul>
+                </div>
 
-        window.addEventListener('scroll', updateActiveLink);
-        updateActiveLink();
-    </script>
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">11</div>
+                    <h3>Folder Watching <span class="badge badge-new">NEW</span></h3>
+                    <p>Auto-process files dropped into watched folders. The killer feature for recurring tasks.</p>
+                    <ul>
+                        <li>Watch multiple folders simultaneously</li>
+                        <li>Apply workflow template automatically</li>
+                        <li>Output cleaned files + SQL scripts</li>
+                        <li>Archive originals after processing</li>
+                        <li>System tray notifications</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon icon-orange">12</div>
+                    <h3>PDF Reports <span class="badge badge-new">NEW</span></h3>
+                    <p>Generate professional compliance reports with company branding.</p>
+                    <ul>
+                        <li>Executive summary</li>
+                        <li>Processing steps detail</li>
+                        <li>Validation results</li>
+                        <li>Column statistics</li>
+                        <li>Custom branding (logo, colors)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow -->
+    <section class="section" id="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple 6-Step Workflow</h2>
+                <p>Follow the tabs from left to right for a complete cleaning workflow.</p>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-step">
+                    <span class="num">1</span>
+                    <span>Import</span>
+                </div>
+                <div class="workflow-arrow">&#8594;</div>
+                <div class="workflow-step">
+                    <span class="num">2</span>
+                    <span>Clean</span>
+                </div>
+                <div class="workflow-arrow">&#8594;</div>
+                <div class="workflow-step">
+                    <span class="num">3</span>
+                    <span>Auto Format</span>
+                </div>
+                <div class="workflow-arrow">&#8594;</div>
+                <div class="workflow-step">
+                    <span class="num">4</span>
+                    <span>Dedupe</span>
+                </div>
+                <div class="workflow-arrow">&#8594;</div>
+                <div class="workflow-step">
+                    <span class="num">5</span>
+                    <span>Validate</span>
+                </div>
+                <div class="workflow-arrow">&#8594;</div>
+                <div class="workflow-step">
+                    <span class="num">6</span>
+                    <span>Export</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLI Section -->
+    <section class="section section-dark" id="cli">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Command-Line Interface</h2>
+                <p>Automate your data cleaning with scripts and batch processing.</p>
+            </div>
+
+            <div class="code-block">
+                <pre><span class="comment"># Clean a file using a saved profile</span>
+<span class="command">datacleaner clean</span> data.csv <span class="flag">--profile</span> monthly <span class="flag">--output</span> cleaned.csv
+
+<span class="comment"># Remove duplicates by email column</span>
+<span class="command">datacleaner dedupe</span> data.csv <span class="flag">--columns</span> email <span class="flag">--keep</span> first <span class="flag">-o</span> deduped.csv
+
+<span class="comment"># Validate emails and required fields</span>
+<span class="command">datacleaner validate</span> data.csv <span class="flag">--email</span> email_col <span class="flag">--required</span> name,id <span class="flag">--json</span>
+
+<span class="comment"># Batch process all CSV files in parallel</span>
+<span class="command">datacleaner batch clean</span> <span class="string">"data/*.csv"</span> <span class="flag">--profile</span> strict <span class="flag">--parallel</span> 4 <span class="flag">--output</span> cleaned/
+
+<span class="comment"># Watch a folder for new files</span>
+<span class="command">datacleaner watch</span> ./inbox <span class="flag">--profile</span> auto_clean <span class="flag">--output</span> ./processed
+
+<span class="comment"># Launch GUI mode</span>
+<span class="command">datacleaner</span> <span class="flag">--gui</span></pre>
+            </div>
+
+            <div class="feature-grid" style="margin-top: 48px;">
+                <div class="feature-card">
+                    <h3>clean</h3>
+                    <p>Apply cleaning transformations to a file.</p>
+                    <ul>
+                        <li><code>--profile</code> - Use saved profile</li>
+                        <li><code>--trim</code> - Trim whitespace</li>
+                        <li><code>--normalize-nulls</code> - Normalize null tokens</li>
+                        <li><code>--dry-run</code> - Preview changes</li>
+                        <li><code>--json</code> - JSON output for scripting</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>dedupe</h3>
+                    <p>Remove duplicate rows.</p>
+                    <ul>
+                        <li><code>--columns</code> - Key columns for matching</li>
+                        <li><code>--keep</code> - first, last, or most_complete</li>
+                        <li><code>--fuzzy</code> - Enable fuzzy matching</li>
+                        <li><code>--threshold</code> - Similarity threshold (0-1)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>validate</h3>
+                    <p>Run validation rules on data.</p>
+                    <ul>
+                        <li><code>--required</code> - Required columns</li>
+                        <li><code>--email</code> - Email column to validate</li>
+                        <li><code>--unique</code> - Unique column check</li>
+                        <li><code>--regex</code> - Custom pattern</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>batch</h3>
+                    <p>Process multiple files at once.</p>
+                    <ul>
+                        <li><code>--parallel</code> - Number of workers</li>
+                        <li><code>--continue-on-error</code> - Don't stop on errors</li>
+                        <li><code>--output</code> - Output directory</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>watch</h3>
+                    <p>Monitor folder for new files.</p>
+                    <ul>
+                        <li><code>--profile</code> - Cleaning profile to apply</li>
+                        <li><code>--output</code> - Output directory</li>
+                        <li><code>--move-originals</code> - Archive folder</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>profile</h3>
+                    <p>Manage cleaning profiles.</p>
+                    <ul>
+                        <li><code>list</code> - List all profiles</li>
+                        <li><code>show &lt;name&gt;</code> - Show profile details</li>
+                        <li><code>export &lt;name&gt;</code> - Export to JSON</li>
+                        <li><code>import &lt;file&gt;</code> - Import from JSON</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Clean Your Data?</h2>
+        <p>Read the complete user guide to get started.</p>
+        <a href="user-guide.html" class="btn">Open User Guide</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>DataCleaner</strong> - Clean data, clear insights.</p>
+        <p>Copyright 2024-2025 Brandon van Vuuren. All rights reserved.</p>
+        <p style="margin-top: 16px;">
+            <a href="https://github.com/brandonvv-dev/Excel_Cleaner" target="_blank">GitHub</a> &middot;
+            <a href="user-guide.html">User Guide</a> &middot;
+            <a href="https://github.com/brandonvv-dev/Excel_Cleaner/issues" target="_blank">Report Issue</a>
+        </p>
+    </footer>
 </body>
 </html>
