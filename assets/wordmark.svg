@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="80" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wordmarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="wordmarkCheck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mini icon -->
+  <g transform="translate(0, 8)">
+    <rect width="64" height="64" rx="12" fill="url(#wordmarkBg)"/>
+    <rect x="12" y="10" width="24" height="32" rx="2" fill="#ffffff"/>
+    <rect x="12" y="18" width="24" height="1" fill="#CBD5E1"/>
+    <rect x="12" y="26" width="24" height="1" fill="#CBD5E1"/>
+    <rect x="22" y="10" width="1" height="32" fill="#CBD5E1"/>
+    <circle cx="44" cy="44" r="14" fill="url(#wordmarkCheck)"/>
+    <path d="M36 44 L42 50 L52 40" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Text -->
+  <text x="80" y="52" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#1E293B">
+    DataCleaner
+  </text>
+</svg>

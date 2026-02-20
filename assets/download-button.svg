@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280" height="64" viewBox="0 0 280 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dlBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="dlShadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#059669" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Button background -->
+  <rect width="280" height="64" rx="12" fill="url(#dlBg)" filter="url(#dlShadow)"/>
+
+  <!-- Download icon -->
+  <g transform="translate(24, 16)">
+    <path d="M16 4 L16 24 M8 16 L16 24 L24 16" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 28 L4 30 C4 31.1 4.9 32 6 32 L26 32 C27.1 32 28 31.1 28 30 L28 28" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text -->
+  <text x="72" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Download Free</text>
+  <text x="72" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#A7F3D0">Windows 10/11 • 64-bit</text>
+</svg>

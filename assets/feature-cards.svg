@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="cardGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="cardPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Card 1: Import -->
+  <g transform="translate(30, 30)">
+    <rect width="260" height="340" rx="20" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="30" y="30" width="80" height="80" rx="16" fill="url(#cardBg)"/>
+    <!-- Import icon -->
+    <path d="M55 70 L70 55 L85 70 M70 55 L70 90" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="30" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#1E293B">Smart Import</text>
+    <text x="30" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+      <tspan x="30" dy="0">Automatically detects</tspan>
+      <tspan x="30" dy="22">encoding, delimiters,</tspan>
+      <tspan x="30" dy="22">and data types from</tspan>
+      <tspan x="30" dy="22">CSV and Excel files.</tspan>
+    </text>
+    <g transform="translate(30, 290)">
+      <rect width="80" height="28" rx="14" fill="#EFF6FF"/>
+      <text x="40" y="18" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#3B82F6">CSV</text>
+      <rect x="90" width="80" height="28" rx="14" fill="#EFF6FF"/>
+      <text x="130" y="18" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#3B82F6">XLSX</text>
+    </g>
+  </g>
+
+  <!-- Card 2: Clean -->
+  <g transform="translate(320, 30)">
+    <rect width="260" height="340" rx="20" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="30" y="30" width="80" height="80" rx="16" fill="url(#cardGreen)"/>
+    <!-- Sparkle/clean icon -->
+    <path d="M70 50 L74 62 L86 66 L74 70 L70 82 L66 70 L54 66 L66 62 Z" fill="#ffffff"/>
+    <circle cx="58" cy="54" r="4" fill="#ffffff" opacity="0.7"/>
+    <circle cx="82" cy="78" r="3" fill="#ffffff" opacity="0.7"/>
+    <text x="30" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#1E293B">Deep Clean</text>
+    <text x="30" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+      <tspan x="30" dy="0">Remove duplicates,</tspan>
+      <tspan x="30" dy="22">normalize headers,</tspan>
+      <tspan x="30" dy="22">fix whitespace, and</tspan>
+      <tspan x="30" dy="22">standardize null values.</tspan>
+    </text>
+    <g transform="translate(30, 290)">
+      <rect width="100" height="28" rx="14" fill="#ECFDF5"/>
+      <text x="50" y="18" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#10B981">Automated</text>
+    </g>
+  </g>
+
+  <!-- Card 3: Validate -->
+  <g transform="translate(610, 30)">
+    <rect width="260" height="340" rx="20" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="30" y="30" width="80" height="80" rx="16" fill="url(#cardAmber)"/>
+    <!-- Shield/validate icon -->
+    <path d="M70 48 L88 56 L88 72 C88 82 70 92 70 92 C70 92 52 82 52 72 L52 56 Z" stroke="#ffffff" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <path d="M62 70 L68 76 L80 64" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="30" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#1E293B">Validate</text>
+    <text x="30" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+      <tspan x="30" dy="0">Apply custom rules</tspan>
+      <tspan x="30" dy="22">to ensure data meets</tspan>
+      <tspan x="30" dy="22">your quality standards</tspan>
+      <tspan x="30" dy="22">before export.</tspan>
+    </text>
+    <g transform="translate(30, 290)">
+      <rect width="100" height="28" rx="14" fill="#FFFBEB"/>
+      <text x="50" y="18" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#D97706">Configurable</text>
+    </g>
+  </g>
+
+  <!-- Card 4: Privacy -->
+  <g transform="translate(900, 30)">
+    <rect width="260" height="340" rx="20" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="30" y="30" width="80" height="80" rx="16" fill="url(#cardPurple)"/>
+    <!-- Lock icon -->
+    <rect x="58" y="64" width="24" height="20" rx="4" stroke="#ffffff" stroke-width="3" fill="none"/>
+    <path d="M62 64 L62 58 C62 52 70 48 70 48 C70 48 78 52 78 58 L78 64" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="70" cy="74" r="3" fill="#ffffff"/>
+    <text x="30" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#1E293B">100% Private</text>
+    <text x="30" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+      <tspan x="30" dy="0">All processing happens</tspan>
+      <tspan x="30" dy="22">locally on your machine.</tspan>
+      <tspan x="30" dy="22">No data leaves your</tspan>
+      <tspan x="30" dy="22">computer. Ever.</tspan>
+    </text>
+    <g transform="translate(30, 290)">
+      <rect width="100" height="28" rx="14" fill="#F3E8FF"/>
+      <text x="50" y="18" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#8B5CF6">Offline-First</text>
+    </g>
+  </g>
+</svg>

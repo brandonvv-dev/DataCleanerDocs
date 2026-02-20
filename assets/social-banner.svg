@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="40%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient id="bannerIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+
+    <linearGradient id="bannerCheck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <filter id="bannerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bannerBg)"/>
+
+  <!-- Decorative grid -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Icon -->
+  <g transform="translate(460, 140)">
+    <rect width="280" height="280" rx="56" fill="url(#bannerIcon)" filter="url(#bannerGlow)"/>
+
+    <!-- Document -->
+    <rect x="48" y="40" width="112" height="140" rx="8" fill="#ffffff"/>
+
+    <!-- Grid -->
+    <rect x="48" y="70" width="112" height="2" fill="#CBD5E1"/>
+    <rect x="48" y="100" width="112" height="2" fill="#CBD5E1"/>
+    <rect x="48" y="130" width="112" height="2" fill="#CBD5E1"/>
+    <rect x="96" y="40" width="2" height="140" fill="#CBD5E1"/>
+    <rect x="140" y="40" width="2" height="140" fill="#CBD5E1"/>
+
+    <!-- Checkmark -->
+    <circle cx="192" cy="192" r="64" fill="url(#bannerCheck)"/>
+    <path d="M160 192 L180 212 L228 164" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Sparkle -->
+    <path d="M220 60 L226 80 L248 88 L226 96 L220 116 L214 96 L192 88 L214 80 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+
+  <!-- App Name -->
+  <text x="600" y="490" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="2">
+    DataCleaner
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="545" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#94A3B8" letter-spacing="4">
+    CLEAN DATA, CLEAR INSIGHTS
+  </text>
+
+  <!-- Feature pills -->
+  <g transform="translate(300, 580)" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+    <text x="0" y="0">CSV</text>
+    <circle cx="50" cy="-4" r="2" fill="#475569"/>
+    <text x="70" y="0">XLSX</text>
+    <circle cx="130" cy="-4" r="2" fill="#475569"/>
+    <text x="150" y="0">LOCAL-FIRST</text>
+    <circle cx="250" cy="-4" r="2" fill="#475569"/>
+    <text x="270" y="0">PRIVACY-FOCUSED</text>
+    <circle cx="400" cy="-4" r="2" fill="#475569"/>
+    <text x="420" y="0">WINDOWS</text>
+  </g>
+</svg>
