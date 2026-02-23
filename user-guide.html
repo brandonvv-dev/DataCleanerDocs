@@ -855,6 +855,7 @@
                     <li><a href="#pdf-reports">PDF Reports</a></li>
                     <li><a href="#system-tray">System Tray</a></li>
                     <li><a href="#cli">Command Line</a></li>
+                    <li><a href="#cli-new">Merge, Split & More</a></li>
                     <li><a href="#automation">Batch & Automation</a></li>
                 </ul>
             </div>
@@ -2183,8 +2184,280 @@ datacleaner validate data.csv --email email --json</code></pre>
                                     <td><code>2</code></td>
                                     <td>Validation failures - some rules failed</td>
                                 </tr>
+                                <tr>
+                                    <td><code>3</code></td>
+                                    <td>Partial success - some files failed (batch/convert)</td>
+                                </tr>
                             </tbody>
                         </table>
+                    </div>
+                </section>
+
+                <!-- New CLI Commands -->
+                <section id="cli-new">
+                    <h2>Merge, Split, Schema, Convert, Report & Chain</h2>
+
+                    <p>Six additional commands for advanced data workflows. All support <code>--json</code> for machine-readable output and <code>--quiet</code> for minimal output.</p>
+
+                    <h3>Merge Command</h3>
+                    <p>Combine multiple files into one. Stack rows (union) or join on a key column.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># Stack files vertically
+datacleaner merge file1.csv file2.csv -o combined.csv
+
+# Merge with glob patterns
+datacleaner merge --glob "data/*.csv" -o combined.csv
+
+# Join files on a key column
+datacleaner merge a.csv b.csv --mode join --join-key id -o merged.csv
+
+# Left join
+datacleaner merge a.csv b.csv --mode join --join-key id --join-type left -o merged.csv</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--mode</code></td>
+                                    <td><code>union</code> (stack rows, default) or <code>join</code> (join on key)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--join-key</code></td>
+                                    <td>Column to join on (required for join mode)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--join-type</code></td>
+                                    <td><code>inner</code> (default), <code>left</code>, or <code>outer</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--format</code></td>
+                                    <td>Output format: <code>csv</code> or <code>xlsx</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--glob</code></td>
+                                    <td>Treat file arguments as glob patterns</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Split Command</h3>
+                    <p>Split a large file into smaller files by row count, column value, or equal chunks.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># Split every 1000 rows
+datacleaner split data.csv --rows 1000 -o parts/
+
+# Split by unique values in a column (one file per region)
+datacleaner split data.csv --by-column region -o by_region/
+
+# Split into 5 equal chunks
+datacleaner split data.csv --chunks 5 -o chunks/</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--rows, -n</code></td>
+                                    <td>Split every N rows</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--by-column</code></td>
+                                    <td>Split by unique values in a column</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--chunks</code></td>
+                                    <td>Split into N equal chunks</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--format</code></td>
+                                    <td>Output format: <code>csv</code> or <code>xlsx</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <div class="callout-icon">&#x2139;&#xFE0F;</div>
+                        <div class="callout-content">
+                            <div class="callout-title">One mode at a time</div>
+                            <p class="callout-text">Use exactly one of <code>--rows</code>, <code>--by-column</code>, or <code>--chunks</code> per invocation.</p>
+                        </div>
+                    </div>
+
+                    <h3>Schema Command</h3>
+                    <p>Infer column types from data, save schemas, and enforce them in CI/CD pipelines.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># Infer and display column types
+datacleaner schema data.csv
+
+# Save inferred schema to a file
+datacleaner schema data.csv --save schema.json
+
+# Enforce a schema (fail on mismatches)
+datacleaner schema data.csv --enforce schema.json --strict</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--save</code></td>
+                                    <td>Save inferred schema to a JSON file</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--enforce</code></td>
+                                    <td>Validate data against a saved schema</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--strict</code></td>
+                                    <td>Exit code 2 on mismatches (use with <code>--enforce</code>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Convert Command</h3>
+                    <p>Bulk format conversion between CSV, Excel, and SQL.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># CSV to Excel
+datacleaner convert data.csv --to xlsx -o output/
+
+# All Excel files to CSV
+datacleaner convert --glob "data/*.xlsx" --to csv -o csvs/
+
+# CSV to SQL INSERT statements
+datacleaner convert data.csv --to sql --table my_table -o sql/</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--to</code></td>
+                                    <td>Target format: <code>csv</code>, <code>xlsx</code>, or <code>sql</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--table</code></td>
+                                    <td>SQL table name (required for <code>--to sql</code>)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--glob</code></td>
+                                    <td>Treat file arguments as glob patterns</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Report Command</h3>
+                    <p>Generate a summary report across multiple data files. Shows row counts, null cells, duplicates, and file sizes.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># Report on specific files
+datacleaner report file1.csv file2.csv
+
+# Report on all CSVs
+datacleaner report --glob "data/*.csv"
+
+# Save report to JSON
+datacleaner report --glob "data/*.csv" -o report.json</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>-o, --output</code></td>
+                                    <td>Save report to a JSON file</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--glob</code></td>
+                                    <td>Treat file arguments as glob patterns</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Chain Command</h3>
+                    <p>Run multiple operations in a single command. Processes steps left to right: clean, dedupe, validate.</p>
+                    <div class="code-header"><span class="code-lang">bash</span></div>
+                    <pre><code># Clean then dedupe in one shot
+datacleaner chain data.csv -s clean,dedupe -o result.csv
+
+# Full pipeline with validation
+datacleaner chain data.csv -s clean,dedupe,validate -o result.csv --validate-required name,id
+
+# With profile and dedupe options
+datacleaner chain data.csv -s clean,dedupe -o result.csv -p monthly --dedupe-columns email</code></pre>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--steps, -s</code></td>
+                                    <td>Comma-separated steps: <code>clean</code>, <code>dedupe</code>, <code>validate</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--profile, -p</code></td>
+                                    <td>Cleaning profile name</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--dedupe-columns</code></td>
+                                    <td>Key columns for deduplication (comma-separated)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--dedupe-keep</code></td>
+                                    <td><code>first</code> (default), <code>last</code>, or <code>most_complete</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--validate-required</code></td>
+                                    <td>Required columns (comma-separated)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--validate-email</code></td>
+                                    <td>Email column to validate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <div class="callout-icon">&#x26A1;</div>
+                        <div class="callout-content">
+                            <div class="callout-title">Chain vs Batch</div>
+                            <p class="callout-text"><code>chain</code> runs multiple steps on <strong>one file</strong>. <code>batch</code> runs one step on <strong>multiple files</strong>. Use both together with shell scripting for full automation.</p>
+                        </div>
                     </div>
                 </section>
 
